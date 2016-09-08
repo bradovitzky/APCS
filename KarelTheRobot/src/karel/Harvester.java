@@ -14,6 +14,7 @@ import kareltherobot.*;
 
 public class Harvester extends UrRobot
 {
+	
     public Harvester(int street, int avenue, Direction dir, int beeps)
     {
         super(street, avenue, dir, beeps);
@@ -78,19 +79,19 @@ public class Harvester extends UrRobot
         prepForEvenRow();
         harvestRow();
     }
-    
+
     public static void main(String [] args)
     {
-        World.readWorld("WorldFiles/fig3-2.kwld");
-        World.setVisible(true);
+    	World.readWorld("WorldFiles/fig3-2.kwld");
+    	World.setVisible(true);
 
-        Harvester Betty = new Harvester(2, 2, East, 0);
-        World.setDelay(10);
-        
-        //
-        // Add calls to methods that represent your plan for solving the problem
-        //
-        Betty.harvestSix();
+    	Harvester Betty = new Harvester(2, 2, East, 0);
+    	World.setDelay(10);
+
+    	//
+    	// Add calls to methods that represent your plan for solving the problem
+    	//
+    	Betty.harvestSix();
         Betty.move();
         Betty.turnOff();
     }
