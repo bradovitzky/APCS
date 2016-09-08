@@ -1,5 +1,5 @@
 /**********************************************************
- * Assignment: Harvester
+ * Assignment: WideHarvester
  *
  * Author: Ben Radovitzky
  *
@@ -12,18 +12,22 @@ package karel;
 
 import kareltherobot.*;
 
-public class Harvester extends UrRobot
+public class WideHarvester extends UrRobot
 {
 	
-    public Harvester(int street, int avenue, Direction dir, int beeps)
+    public WideHarvester(int street, int avenue, Direction dir, int beeps)
     {
         super(street, avenue, dir, beeps);
     }
 
-    // Add methods here to support the plan in your main method to solve the problem
-
-    public void pickFive()
+    public void pickSeven()
     {
+    	move();
+    	pickBeeper();
+    	move();
+    	pickBeeper();
+    	move();
+    	pickBeeper();
     	move();
     	pickBeeper();
     	move();
@@ -59,38 +63,35 @@ public class Harvester extends UrRobot
     	turnRight();
     }
     
-    public void harvestRow()
-    {
-    	pickFive();
-    }
-    
-    
     public void harvestSix()
     {
-    	harvestRow();
+    	pickSeven();
     	prepForEvenRow();
-        harvestRow();
+        pickSeven();
         prepForOddRow();
-        harvestRow();
+        pickSeven();
         prepForEvenRow();
-        harvestRow();
+        pickSeven();
         prepForOddRow();
-        harvestRow();
+        pickSeven();
         prepForEvenRow();
-        harvestRow();
+        pickSeven();
     }
 
     public static void main(String [] args)
     {
-    	World.readWorld("WorldFiles/fig3-2.kwld");
+    	World.readWorld("WorldFiles/fig3-3a.kwld");
     	World.setVisible(true);
 
-    	Harvester Betty = new Harvester(2, 2, East, 0);
+    	Harvester Will = new Harvester(2, 2, East, 0);
     	World.setDelay(10);
-    	
-    	Betty.harvestSix();
-        Betty.move();
-        Betty.turnOff();
+
+    	//
+    	// Add calls to methods that represent your plan for solving the problem
+    	//
+    	Will.harvestSix();
+        Will.move();
+        Will.turnOff();
     }
 
 }
