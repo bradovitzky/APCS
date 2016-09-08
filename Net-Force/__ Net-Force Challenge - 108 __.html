@@ -1,0 +1,45 @@
+
+<!-- saved from url=(0053)http://www.net-force.nl/challenge/level108/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>:: Net-Force Challenge - 108 ::</title>
+    <link href="./__ Net-Force Challenge - 108 ___files/challenge.css" rel="stylesheet" type="text/css">
+    <script>
+      function Login()
+      {
+        regex = /%20|%0D|%0A/gi;
+        var value=escape(document.getElementsByTagName("html")[0].innerHTML).toUpperCase();
+        value = value.replace(regex, "");
+        var left = (window.screen.availWidth)-100;
+        var top  = (window.screen.availHeight)-20;
+        var newWindow = window.open("", "login", "toolbar=0,scrollbars=0,location=0,status=0,menubars=0,resizable=0,width=200,height=100,left=" + left + ",top=" + top);
+        newWindow.document.writeln("<html>");
+        newWindow.document.writeln("  <head>");
+        newWindow.document.writeln("    <title>...- - - - -Login- - - -</title>");
+        newWindow.document.writeln("  </head>");
+        newWindow.document.writeln("  <body topmargin='0' leftmargin='0'>");
+        newWindow.document.writeln("    <span style='position: absolute; left: 0; top: 0'><iframe src='challenge.html' width='500' height='500' frameborder='0' SCROLLING='no'></iframe></span>");
+        newWindow.document.writeln("    <!" + "--" + value + "--" + ">");
+        newWindow.document.writeln("  </body>");
+        newWindow.document.writeln("</html>");
+        newWindow.document.close();
+      }
+    </script>
+  </head>
+  <body>
+    <script>
+      var url = document.location.href.split("/");
+      if (url[url.length-1] != "index.html" || document.location.href.indexOf("www.") == -1) document.location.href = "http://www.net-force.nl/challenge/level108/index.html";
+    </script>
+    <div id="top">
+      <img src="./__ Net-Force Challenge - 108 ___files/challenge_logo.png" alt="">
+    </div>
+    <div id="challenge">
+      <h1>Drugs are bad</h1>
+      <p>
+        <input type="button" value="Login" onclick="javascript:Login()">
+      </p>
+      <div id="madeby">This challenge is made by Eierkoek.</div>
+    </div>
+    <!-- gna gna gna -->
+  
+</body></html>

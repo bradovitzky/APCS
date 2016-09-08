@@ -1,0 +1,67 @@
+
+<!-- saved from url=(0040)https://net-force.nl/challenge/level109/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<title>:: Net-Force Challenge - 109 ::</title>
+		<link href="./__ Net-Force Challenge - 109 ___files/challenge.css" rel="stylesheet" type="text/css">
+		<script src="./__ Net-Force Challenge - 109 ___files/javascript">
+			var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 =.'\";{}()_";
+			var passChecker = "Z_4Qb7iks5l(JXZeVgApEdAZ92.GmoV9=ik6H4n g=52'G)f==W62o=}}Xee036W;f==109";
+			var passCheckerHash = "B5A2DC0F6DB6C5C12F61ABA44B3A5FBE";
+			function login(passwordElement, usernameElement) {
+				var password = passwordElement.value;
+				var username = usernameElement.value;
+				var success = false;
+				passwordElement.value = "";
+				usernameElement.value = "";
+				var thePassChecker = passChecker.split('');
+				for (var i=0; i<thePassChecker.length; i++) {
+					thePassChecker[i] = characters.charAt((characters.indexOf(thePassChecker[i])+characters.indexOf(username.charAt(i%username.length)))%characters.length);
+				}
+				thePassChecker = thePassChecker.join('');
+				if (thePassChecker.hash()==passCheckerHash) {
+					try {
+						alert(thePassChecker);
+					} catch(exception) {
+						success = false;
+					}
+				}
+				if (success) {
+					alert('Weeee, you did it! Enter "'+username+'_'+password+'" at the challengepage');
+				} else {
+					alert('Nope, that is not correct :(');
+					window.location.href = window.location.href;
+				}
+			}
+			String.prototype.hash = function() {
+				var hashChars = "0123456789ABCDEF";
+				hashChars = hashChars.split('');
+				var returnValueString = "0123456789ABCDEF0123456789ABCDEF";
+				returnValue = returnValueString.split('');
+				var splittedString = this.split('');
+				var stringLength = this.length;
+				for (var i=0; i<(stringLength*3)+70; i++) {
+					returnValue[i%32] = hashChars[(returnValueString.indexOf(returnValue[i%32])+characters.indexOf(splittedString[i%stringLength])+characters.indexOf(splittedString[(i+1)%stringLength])+characters.indexOf(splittedString[(i+2)%stringLength]))%16];
+				}
+				return returnValue.join('');
+			}
+		</script>
+	</head>
+	<body onload="document.getElementById(&#39;username&#39;).focus();">
+		<div id="top">
+			<img src="./__ Net-Force Challenge - 109 ___files/challenge_logo.png" alt="">
+		</div>
+		<div id="challenge">
+			<h1>Devaluation</h1>
+			<p>
+				</p><form action="" onsubmit="login(document.getElementById(&#39;password&#39;), document.getElementById(&#39;username&#39;)); return false;">
+					<label for="username">Username:</label><br>
+					<input type="text" name="username" id="username" value="" style="width: 150px; position:relative; background-color: #F5F5F5; font-size: 1em; padding-left: 3px; border: 1px solid gray;"><br>
+					<label for="password">Password:</label><br>
+					<input type="password" name="password" id="password" value="" style="width: 150px; position:relative; background-color: #F5F5F5; font-size: 1em; padding-left: 3px; border: 1px solid gray;"><br>
+					<input type="submit" value="Login!" style="width: 150px; position:relative; top:4px;">
+				</form>
+			<p></p>
+			<div id="madeby">This challenge is made by Eierkoek.</div>
+		</div>
+	
+</body></html>

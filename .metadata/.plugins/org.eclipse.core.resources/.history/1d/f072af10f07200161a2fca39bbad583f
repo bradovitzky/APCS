@@ -1,0 +1,20 @@
+package karel;
+
+import kareltherobot.*;
+
+public class Bowler extends UrRobot
+{
+	public Bowler(int street, int avenue, Direction direction, int beepers)
+	{
+		super(street, avenue, direction, beepers);
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Bowler karel = new Bowler(1,5,North,10);
+		
+		World.setVisible(true);
+		World.setDelay(50);
+	}
+
+}

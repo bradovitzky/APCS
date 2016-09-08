@@ -1,0 +1,90 @@
+package karel;
+
+import kareltherobot.*;
+import kareltherobot.Directions.Direction;
+
+// This robot task is from page 11 in the text
+public class CompleteProgram extends UrRobot
+{
+	public CompleteProgram(int street, int avenue, Direction direction, int beepers){
+		super(street, avenue, direction, beepers);
+	}
+
+	public void turnRight()
+	{
+		turnLeft();
+		turnLeft();
+		turnLeft();
+	}
+	
+	public void drawBumps()
+	{
+		move();
+		putBeeper();
+		move();
+		putBeeper();
+		turnRight();
+		move();
+		putBeeper();
+		move();
+		putBeeper();
+		turnRight();
+		move();
+		putBeeper();
+		turnAround();
+		move();
+		move();
+		turnRight();
+		move();
+		putBeeper();
+		move();
+		putBeeper();
+		turnRight();
+		move();
+		putBeeper();
+		
+	}
+	public void putFive()
+	{
+		putBeeper();
+		move();
+		putBeeper();
+		move();
+		putBeeper();
+		move();
+		putBeeper();
+		move();
+		putBeeper();
+	}
+	
+	public void turnAround()
+	{
+		turnLeft();
+		turnLeft();
+	}
+	public void drawB()
+	{
+		putFive();
+		turnRight();
+		drawBumps();
+		
+	}
+	
+	public static void main(String[] args)
+	{
+		// World file (leave out the readWorld line if you just want a blank world)
+		World.readWorld("WorldFiles/fig2-3.kwld");
+		World.setVisible(true);
+		World.setTrace(true);
+		World.setDelay(20);
+		
+		CompleteProgram karel = new CompleteProgram(1,2,East, 13);
+		karel.move();
+		karel.move();
+		karel.pickBeeper();
+		karel.turnLeft();
+		karel.drawB();
+
+	}
+
+}

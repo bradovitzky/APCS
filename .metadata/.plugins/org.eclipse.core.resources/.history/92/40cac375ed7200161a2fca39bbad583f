@@ -1,0 +1,64 @@
+package karel;
+
+import kareltherobot.*;
+
+//This robot task is from page 11 in the text
+public class CrossCleaner extends UrRobot {
+	
+	public CrossCleaner(int street, int avenue,Direction direction, int beepers){
+		super(street, avenue, direction, beepers);
+	}
+	
+	public void harvestThree(){
+		move();
+		pickBeeper();
+		move();
+		pickBeeper();
+		move();
+		pickBeeper();
+	}
+	
+	public void turnRight(){
+		turnLeft();
+		turnLeft();
+		turnLeft();
+	}
+	
+	public void reachCross(){
+		turnLeft();
+		harvestThree();
+	}
+	
+	public void traverseAngle(){
+		harvestThree();
+		turnRight();
+		harvestThree();
+	}
+	
+	public void roundCorner(){
+		turnLeft();
+		move();
+		turnLeft();
+	}
+	
+	public void traverseCross(){
+		traverseAngle();
+		roundCorner();
+	}
+	public void returnHome(){
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		World.readWorld("WorldFiles/fig3-8.kwld");
+		World.setVisible(true);
+		World.setDelay(50);
+		
+		CrossCleaner karel = new CrossCleaner(2,2,South,28);
+		
+		karel.reachCross();
+		karel.traverseCross();
+		karel.returnHome();
+	}
+
+}

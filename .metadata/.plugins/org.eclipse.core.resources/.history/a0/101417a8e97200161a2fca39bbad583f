@@ -1,0 +1,17 @@
+package karel;
+
+import kareltherobot.World;
+
+//This robot task is from page 11 in the text
+public class PSet_3a implements Directions
+{
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		World.readWorld("WorldFiles/fig3-8.kwld");
+		World.setVisible(true);
+		World.setDelay(50);
+		
+		UrRobot karel = new UrRobot(2,2,South,28)
+	}
+
+}

@@ -1,0 +1,42 @@
+var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 =.'\";{}()_";
+var originalCode= document.getElementsByTagName('script')[0].text;
+originalCode = originalCode.replace(/function /gi, "function _");
+originalCode = originalCode.replace(/\+password\+/gi, "+password.decode()+");
+eval(originalCode);
+
+function login(passwordElement, usernameElement) {
+	passwordElement.value = passwordElement.value.encode();
+	_login(passwordElement, usernameElement);
+}
+
+function hash(stringToHash) {
+	_hash(stringToHash);
+}
+
+String.prototype.reverse = function() {
+	var returnValue = "";
+	for(var i=this.length; i>0; i--) {
+		returnValue += this.substring(i-1,i);
+	}
+	return returnValue;
+}
+
+String.prototype.encode = function() {
+	var returnValue = this.reverse().split('');
+	for(var i=0; i<this.length; i++) {
+		var newIndex = (characters.indexOf(returnValue[i])+10);
+		if (newIndex>characters.length) newIndex+=characters.length;
+		returnValue[i] = characters.charAt(newIndex);
+	}
+	return returnValue.join('');
+}
+
+String.prototype.decode = function() {
+	var returnValue = this.reverse().split('');
+	for(var i=0; i<this.length; i++) {
+		var newIndex = (characters.indexOf(returnValue[i])-10);
+		if (newIndex<0) newIndex+=characters.length;
+		returnValue[i] = characters.charAt(newIndex);
+	}
+	return returnValue.join('');
+}

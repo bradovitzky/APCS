@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0040)https://net-force.nl/challenge/level102/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="nl"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>:: Net-Force Challenge - 102 ::</title>
+<link href="./__ Net-Force Challenge - 102 ___files/challenge.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="top">
+	<img src="./__ Net-Force Challenge - 102 ___files/challenge_logo.png" alt="">
+</div>
+<div id="challenge">
+<h1>This won't take long...</h1>
+<p>
+Find the right password and use it on the challenge page!
+</p>
+<script type="text/javascript">
+var numletter="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+function submitentry(){
+	verification = document.getElementById("passwd").value;
+	
+	alert("Searching.");
+	alert("Searching..");
+	alert("Searching...");
+	
+	password = numletter.substring(11,12);
+	password = password + numletter.substring(18,19);
+	password = password + numletter.substring(23,24);
+	password = password + numletter.substring(16,17);
+	password = password + numletter.substring(24,25);
+	password = password + numletter.substring(1,4);
+	alert(password)
+	if(verification == password){
+		alert("Well done, you've got it!");
+	} else {
+		alert("Nahh, thats wrong!");
+	}
+}
+</script>
+
+<form action="https://net-force.nl/challenge/level102/index.php" method="post">
+<input type="password" name="passwd" id="passwd" size="16">
+<input type="submit" name="submit" value="Enter" onclick="submitentry(); return false;">
+</form>
+</div>
+
+</body></html>

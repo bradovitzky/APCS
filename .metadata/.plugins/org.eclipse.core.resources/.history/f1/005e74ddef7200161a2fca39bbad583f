@@ -1,0 +1,13 @@
+package karel;
+
+import kareltherobot.*;
+
+public class Bowler extends UrRobot
+{
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
