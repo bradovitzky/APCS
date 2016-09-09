@@ -1,5 +1,5 @@
 /**********************************************************
- * Assignment: Harvester
+ * Assignment: WideHarvester
  *
  * Author: Ben Radovitzky
  *
@@ -12,10 +12,10 @@ package karel;
 
 import kareltherobot.*;
 
-public class Harvester extends UrRobot
+public class WideHarvester extends UrRobot
 {
 	
-    public Harvester(int street, int avenue, Direction dir, int beeps)
+    public WideHarvester(int street, int avenue, Direction dir, int beeps)
     {
         super(street, avenue, dir, beeps);
     }
@@ -24,6 +24,10 @@ public class Harvester extends UrRobot
 
     public void harvestRow()
     {
+    	move();
+    	pickBeeper();
+    	move();
+    	pickBeeper();
     	move();
     	pickBeeper();
     	move();
@@ -59,7 +63,6 @@ public class Harvester extends UrRobot
     	turnRight();
     }
     
-    
     public void harvestSix()
     {
     	harvestRow();
@@ -77,15 +80,15 @@ public class Harvester extends UrRobot
 
     public static void main(String [] args)
     {
-    	World.readWorld("WorldFiles/fig3-2.kwld");
+    	World.readWorld("WorldFiles/fig3-3a.kwld");
     	World.setVisible(true);
 
-    	Harvester Betty = new Harvester(2, 2, East, 0);
+    	WideHarvester Will = new WideHarvester(2, 2, East, 0);
     	World.setDelay(10);
     	
-    	Betty.harvestSix();
-        Betty.move();
-        Betty.turnOff();
+    	Will.harvestSix();
+        Will.move();
+        Will.turnOff();
     }
 
 }

@@ -1,5 +1,5 @@
 /**********************************************************
- * Assignment: Harvester
+ * Assignment: DiamondHarvester
  *
  * Author: Ben Radovitzky
  *
@@ -12,28 +12,31 @@ package karel;
 
 import kareltherobot.*;
 
-public class Harvester extends UrRobot
+public class DiamondHarvester extends UrRobot
 {
 	
-    public Harvester(int street, int avenue, Direction dir, int beeps)
+    public DiamondHarvester(int street, int avenue, Direction dir, int beeps)
     {
         super(street, avenue, dir, beeps);
     }
 
     // Add methods here to support the plan in your main method to solve the problem
 
+    public void harvestCorner()
+    {
+
+    	move();
+    	turnLeft();
+    	move();
+    	turnRight();
+    	pickBeeper();
+    }
     public void harvestRow()
     {
-    	move();
     	pickBeeper();
-    	move();
-    	pickBeeper();
-    	move();
-    	pickBeeper();
-    	move();
-    	pickBeeper();
-    	move();
-    	pickBeeper();
+    	harvestCorner();
+    	harvestCorner();
+    	harvestCorner();
     }
     
     public void turnRight()
@@ -45,10 +48,10 @@ public class Harvester extends UrRobot
     
     public void prepForEvenRow()
     {
-    	move();
     	turnLeft();
     	move();
     	turnLeft();
+    	move();
     }
     
     public void prepForOddRow()
@@ -60,14 +63,10 @@ public class Harvester extends UrRobot
     }
     
     
-    public void harvestSix()
+    public void harvestFour()
     {
     	harvestRow();
     	prepForEvenRow();
-        harvestRow();
-        prepForOddRow();
-        harvestRow();
-        prepForEvenRow();
         harvestRow();
         prepForOddRow();
         harvestRow();
@@ -77,15 +76,19 @@ public class Harvester extends UrRobot
 
     public static void main(String [] args)
     {
-    	World.readWorld("WorldFiles/fig3-2.kwld");
+    	World.readWorld("WorldFiles/fig3-5.kwld");
     	World.setVisible(true);
 
-    	Harvester Betty = new Harvester(2, 2, East, 0);
+    	DiamondHarvester Dave = new DiamondHarvester(2, 2, East, 0);
     	World.setDelay(10);
     	
-    	Betty.harvestSix();
-        Betty.move();
-        Betty.turnOff();
+    	Dave.move();
+    	Dave.move();
+    	Dave.move();
+    	Dave.move();
+    	Dave.harvestFour();
+        Dave.move();
+        Dave.turnOff();
     }
 
 }

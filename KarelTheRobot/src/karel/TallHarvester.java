@@ -1,5 +1,5 @@
 /**********************************************************
- * Assignment: Harvester
+ * Assignment: TallHarvester
  *
  * Author: Ben Radovitzky
  *
@@ -12,17 +12,17 @@ package karel;
 
 import kareltherobot.*;
 
-public class Harvester extends UrRobot
+public class TallHarvester extends UrRobot
 {
 	
-    public Harvester(int street, int avenue, Direction dir, int beeps)
+    public TallHarvester(int street, int avenue, Direction dir, int beeps)
     {
         super(street, avenue, dir, beeps);
     }
 
     // Add methods here to support the plan in your main method to solve the problem
 
-    public void harvestRow()
+    public void pickFive()
     {
     	move();
     	pickBeeper();
@@ -59,11 +59,20 @@ public class Harvester extends UrRobot
     	turnRight();
     }
     
+    public void harvestRow()
+    {
+    	pickFive();
+    }
     
-    public void harvestSix()
+    
+    public void harvestEight()
     {
     	harvestRow();
     	prepForEvenRow();
+        harvestRow();
+        prepForOddRow();
+        harvestRow();
+        prepForEvenRow();
         harvestRow();
         prepForOddRow();
         harvestRow();
@@ -77,15 +86,15 @@ public class Harvester extends UrRobot
 
     public static void main(String [] args)
     {
-    	World.readWorld("WorldFiles/fig3-2.kwld");
+    	World.readWorld("WorldFiles/fig3-3b.kwld");
     	World.setVisible(true);
 
-    	Harvester Betty = new Harvester(2, 2, East, 0);
+    	TallHarvester Tom = new TallHarvester(2, 2, East, 0);
     	World.setDelay(10);
     	
-    	Betty.harvestSix();
-        Betty.move();
-        Betty.turnOff();
+    	Tom.harvestEight();
+        Tom.move();
+        Tom.turnOff();
     }
 
 }
