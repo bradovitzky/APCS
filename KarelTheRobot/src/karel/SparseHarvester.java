@@ -41,7 +41,6 @@ public class SparseHarvester extends Robot
     	checkAndMove();
     	checkAndMove();
     	checkAndMove();
-    	checkAndMove();
     }
     
     public void turnRight()
@@ -53,7 +52,7 @@ public class SparseHarvester extends Robot
     
     public void prepForEvenRow()
     {
-    	move();
+    	checkAndMove();
     	turnLeft();
     	move();
     	turnLeft();
@@ -61,7 +60,7 @@ public class SparseHarvester extends Robot
     
     public void prepForOddRow()
     {
-    	move();
+    	checkAndMove();
     	turnRight();
     	move();
     	turnRight();
@@ -85,14 +84,15 @@ public class SparseHarvester extends Robot
 
     public static void main(String [] args)
     {
-    	World.readWorld("WorldFiles/fig5-1.kwld");
+    	MakeSparseField temp = new MakeSparseField();
+    	World.readWorld("sparsex.kwld");
     	World.setVisible(true);
 
     	SparseHarvester Steve = new SparseHarvester(2, 2, East, 0);
-    	World.setDelay(10);
+    	World.setDelay(5);
     	
     	Steve.harvestSix();
-        Steve.move();
+        Steve.checkAndMove();
         Steve.turnOff();
     }
 
