@@ -1,0 +1,15 @@
+package karel;
+
+public class SuperHarvester
+{
+
+	
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+		MakeSuperField temp = new MakeSuperField();
+		World.readWorld("superx.kwld");
+
+	}
+
+}

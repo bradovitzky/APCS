@@ -1,0 +1,43 @@
+package karel;
+
+import kareltherobot.*;
+import kareltherobot.Directions.Direction;
+
+public class SuperHarvester extends Robot
+{
+	public SuperHarvester(int street, int avenue, Direction dir, int beeps)
+	    {
+	        super(street, avenue, dir, beeps);
+	    }
+
+	public void harvestLine()
+	{
+		while (nextToABeeper())
+		{
+			pickBeeper();
+		}
+		move();
+		if (nextToABeeper())
+		{
+			harvestLine();
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+		MakeSuperField temp = new MakeSuperField();
+		World.readWorld("superx.kwld");
+		World.setVisible(true);
+
+    	SuperHarvester Clark = new SuperHarvester(2, 2, East, 0);
+    	World.setDelay(5);
+
+    	for (int i=0;i<7;i++)
+    	{
+    		Clark.harvestLine();
+    	}
+    	Clark.turnOff();
+	}
+
+}

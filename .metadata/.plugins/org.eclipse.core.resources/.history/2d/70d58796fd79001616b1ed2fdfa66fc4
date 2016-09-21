@@ -1,0 +1,17 @@
+package karel;
+
+import kareltherobot.*;
+
+public class SuperHarvester extends Robot
+{
+
+	
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+		MakeSuperField temp = new MakeSuperField();
+		World.readWorld("superx.kwld");
+
+	}
+
+}

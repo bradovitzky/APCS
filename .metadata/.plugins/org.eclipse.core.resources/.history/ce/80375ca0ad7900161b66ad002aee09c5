@@ -1,0 +1,12 @@
+package karel;
+
+import kareltherobot.*;
+
+public class EntryTask_9_13 extends Robot{
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
