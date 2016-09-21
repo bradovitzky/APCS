@@ -1,3 +1,13 @@
+/**********************************************************
+ * Assignment: HurdleJumper
+ *
+ * Author: Ben Radovitzky
+ *
+ * Academic Integrity: I pledge that this program represents my own work. I
+ * received help from no one in designing and debugging
+ * my program.
+ **********************************************************/
+
 package karel;
 
 import kareltherobot.*;
@@ -52,6 +62,7 @@ public class HurdleJumper extends Robot
     	HurdleJumper Harry = new HurdleJumper(1, 1, East, 0);
     	World.setDelay(1);
     	
+    	System.out.println(4/3);
     	// precondition: Harry is not at the end of the file and on street 1
     	// postcondition: Harry is at the end of the program
 		while (true)
