@@ -1,0 +1,29 @@
+
+public class GreatestCommonFactor
+{
+	public static int gcf(int smaller, int bigger)
+	{
+		int greatestSoFar = 1;
+
+		for (int i = 1; i <= smaller; i++)
+		{
+			if (smaller % i == 0 && ??????????????)
+			{
+			    greatestSoFar = ??;
+			}
+		}
+		return greatestSoFar;
+	}
+
+	public static void main(String[] args)
+	{
+		int num1 = 24;
+		int num2 = 54;
+		int answer;
+
+		System.out.print("The greatest common factor between " + num1 + " and " + num2 + " is ");
+		answer = gcf(num1, num2);
+		System.out.println(answer);
+	}
+
+}

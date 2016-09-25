@@ -1,0 +1,23 @@
+package src;
+
+public class ParametersAssignment
+{
+	public static void Fibonacci(int number) {
+		}
+		int fibo1 = 1;
+		int fibo2 = 1;
+		int fibonacci = 1;
+		for (int i = 3; i <= number; i++) {
+			fibonacci = fibo1 + fibo2; // Fibonacci number is sum of previous two Fibonacci number
+			fibo1 = fibo2;
+			fibo2 = fibonacci;
+ 
+		}
+	}
+	public static void main(String[] args)
+	{
+		Fibonacci();
+
+	}
+
+}

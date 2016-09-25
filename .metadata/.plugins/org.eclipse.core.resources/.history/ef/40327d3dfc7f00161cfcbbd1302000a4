@@ -1,0 +1,18 @@
+
+public class FirstString
+{
+
+	public static void main(String[] args)
+	{
+		String myName = "Ben Radovitzky";
+		System.out.println(myName);
+
+		int n = 0;
+		while (n < myName.length())
+		{
+			System.out.println(myName.indexOf(n));
+			n++
+		}
+	}
+
+}

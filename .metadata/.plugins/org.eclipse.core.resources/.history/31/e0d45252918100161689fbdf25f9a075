@@ -1,0 +1,34 @@
+package src;
+import java.util.*;
+
+public class ReduceToLowestTerms
+{
+	public static int gcf(int smaller, int bigger)
+	{
+		int greatestSoFar = 1;
+
+		for (int i = 1; i <= smaller; i++)
+		{
+			if (smaller % i == 0 && bigger % i == 0)
+			{
+			    greatestSoFar = i;
+			}
+		}
+		return greatestSoFar;
+	}
+	
+	public static String makeFraction(int n, int d)
+	{
+		String fraction = n + "/" + d;
+		return fraction;
+	}
+	
+	public static void main(String[] args)
+	{
+		Scanner console = new Scanner(System.in);
+		int num1 = console.nextInt();
+		int num2 = console.nextInt();
+
+	}
+
+}

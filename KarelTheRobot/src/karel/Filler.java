@@ -76,7 +76,18 @@ public class Filler extends Robot
 		{
 			Frank.putAndMove();
 		}
+		Frank.jumpBeeperHurdle();
 
+	}
+
+	private void jumpBeeperHurdle()
+	{
+		if (facingWest())
+		{
+			moveUpAndTurnAround();
+			putBeeper();
+		}
+		
 	}
 
 	private void moveUpAndTurnAround()
@@ -86,12 +97,16 @@ public class Filler extends Robot
 			turnLeft();
 			move();
 			turnLeft();
+			putBeeper();
+			move();
 		}
 		else if (facingWest())
 		{
 			turnRight();
 			move();
 			turnRight();
+			putBeeper();
+			move();
 		}
 	}
 
