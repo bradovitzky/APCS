@@ -1,0 +1,11 @@
+package src;
+
+public class EntryTask
+{
+
+	public static void main(String[] args)
+	{
+		double rand = (Math.random()*17) + 2000;
+	}
+
+}

@@ -1,0 +1,43 @@
+package src;
+import java.util.*;
+
+public class RockPaperScissors
+{
+
+	public static void main(String[] args)
+	{
+		String compChoice;
+		Scanner console = new Scanner(System.in);
+		System.out.println("Choose rock, paper, or scissors:");
+		String[] options = {"rock", "paper", "scissors"};
+		
+		// This section is to force the user to pick between the three values and nothing else
+		if(userChoice != "rock")
+		{
+			if(userChoice != "paper")
+			{
+				if(userChoice != "scissors")
+				{
+					System.out.println("Please choose between rock, paper, or scissors: ")
+					userChoice = console.next();
+				}
+			}
+		}
+		
+		// This section is to get the computer to make a selection
+		int rand = (int)(Math.random()*3);
+		if(rand == 0)
+		{
+			compChoice = "rock";
+		}
+		else if(rand == 1)
+		{
+			compChoice = "paper";
+		}
+		else
+		{
+			compChoice = "scissors";
+		}
+	}
+
+}

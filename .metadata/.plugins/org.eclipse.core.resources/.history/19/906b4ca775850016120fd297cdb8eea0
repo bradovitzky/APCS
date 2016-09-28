@@ -1,0 +1,20 @@
+package src;
+
+public class EntryTask
+{
+
+	public static int countVowels(String theString)
+	{
+		int x;
+		//DoStuff
+		return x;
+	}
+	
+	public static void main(String[] args)
+	{
+		String aString = "asdfghjkl";
+		String lastTwoLetters = aString.substring(aString.length()-2, aString.length());
+		System.out.println(lastTwoLetters);
+	}
+
+}

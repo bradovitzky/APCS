@@ -1,0 +1,91 @@
+package src;
+import java.util.*;
+
+public class RockPaperScissors
+{
+	public static void findWinner(String userChoice, String compChoice)
+	{
+		// This section will decide who the winner is
+				if(userChoice.equals(compChoice))
+				{
+					System.out.println("You and the computer both chose " + userChoice);
+					System.out.println("It was a tie!");
+				}
+				else if(userChoice.equals("rock"))
+				{
+					System.out.println("You chose rock");
+					if(compChoice == "paper")
+					{
+						System.out.println("The computer chose paper");
+						System.out.println("The computer won!");
+					}
+					if(compChoice == "scissors")
+					{
+						System.out.println("The computer chose scissors");
+						System.out.println("You won!");
+					}
+				}
+				else if(userChoice.equals("paper"))
+				{
+					System.out.println("You chose paper");
+					if(compChoice.equals("rock"))
+					{
+						System.out.println("The computer chose rock");
+						System.out.println("You won!");
+					}
+					if(compChoice.equals("scissors"))
+					{
+						System.out.println("The computer chose scissors");
+						System.out.println("The computer won!");
+					}
+				}
+				else if(userChoice.equals("scissors"))
+				{
+					System.out.println("You chose scissors");
+					if(compChoice.equals("rock"))
+					{
+						System.out.println("The computer chose rock");
+						System.out.println("The computer won!");
+					}
+					if(compChoice.equals("paper"))
+					{
+						System.out.println("The computer chose paper");
+						System.out.println("You won!");
+					}
+				}
+	}
+	
+	public static void main(String[] args)
+	{
+		String compChoice;
+		Scanner console = new Scanner(System.in);
+		System.out.println("Choose rock, paper, or scissors:");
+		String userChoice = console.next();
+		
+		// This section is to force the user to pick between the three values and nothing else.
+		
+		while(!userChoice.equals("rock") && !userChoice.equals("paper") && !userChoice.equals("scissors"))
+		{
+			System.out.println("Please choose between rock, paper, or scissors: ");
+			userChoice = console.next();
+		}
+		
+		// This section is to get the computer to make a selection
+		int rand = (int)(Math.random()*3);
+		if(rand == 0)
+		{
+			compChoice = "rock";
+		}
+		else if(rand == 1)
+		{
+			compChoice = "paper";
+		}
+		else
+		{
+			compChoice = "scissors";
+		}
+		
+		findWinner(userChoice, compChoice);
+	}
+
+}
