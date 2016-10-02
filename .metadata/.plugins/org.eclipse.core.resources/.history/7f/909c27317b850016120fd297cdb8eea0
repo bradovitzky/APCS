@@ -1,0 +1,19 @@
+package fracCalc1;
+import java.util.*;
+public class FractionalCalculator
+{
+
+	public static void main(String[] args)
+	{
+		Scanner console = new Scanner(System.in);
+		System.out.println("Welcome to the Fraction Calculator!");
+		System.out.println("Enter an expression (or \"quit\"): ");
+		String leftOperand = console.next();
+		String operator = console.next();
+		String rightOperand = console.next();
+		System.out.println("Left operand: "leftOperand);
+		System.out.println("Goodbye!");
+
+	}
+
+}

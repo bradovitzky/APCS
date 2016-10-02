@@ -1,0 +1,12 @@
+package fracCalc1;
+
+public class FractionalCalculator
+{
+
+	public static void main(String[] args)
+	{
+		System.out.println("Welcome to the Fraction Calculator!");
+
+	}
+
+}
