@@ -1,0 +1,70 @@
+package src;
+import java.util.*;
+public class BoxedString
+{
+	public static void printHorizontalSpaces(int spaces)
+	{
+		for(int i=0; i < spaces; i++)
+		{
+			System.out.print(" ");
+		}
+	}
+	public static void printVerticalSpaces(int spaces, String string)
+	{
+		System.out.print("|");
+		for(int i = 0; i < spaces; i++)
+		{
+			for(int c= 0; c < string.length; c++)
+			{
+				printHorizontalSpaces(spaces);
+				System.out.print("|");
+			}
+			
+		}
+	}
+	public static void printLineOfDashes(String string)
+	{
+		for(int c = 0; c <= string.length()*2; c++)
+		{
+			System.out.print("-");
+		}
+	}
+	public static void main(String[] args)
+	{
+		Scanner console = new Scanner(System.in);
+		System.out.println("Enter a string (or \"quit\"): ");
+		String string = console.nextLine();
+		System.out.println("Enter a size: ");
+		int size = console.nextInt();
+		while (!string.equals("quit"))
+		{
+			if (size <= 0)
+			{
+				throw new IllegalArgumentException("Size must be at least 1!");
+			}
+			printLineOfDashes(string);
+			System.out.println();
+			printVerticalSpaces(size-1, string);
+			int n = 1;
+			System.out.println();
+			System.out.print("|");
+			for(int i = 0; i < string.length(); i++)
+			{
+				printHorizontalSpaces(size-1);
+				System.out.print(string.charAt(i));
+				printHorizontalSpaces(size-1);
+				System.out.print("|");
+				n += 2;
+			}
+			System.out.println();
+			printVerticalSpaces(size-1, string);
+			System.out.println();
+			printLineOfDashes(string);
+			System.out.println();
+			System.out.println("Enter a string (or \"quit\"): ");
+			string = console.nextLine();
+		}
+		System.out.println("Goodbye!");
+	}
+
+}

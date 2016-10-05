@@ -1,0 +1,89 @@
+package src;
+import java.util.*;
+
+public class BoxedString2
+{
+
+	public static void main(String[] args)
+	{
+		Scanner console = new Scanner(System.in);
+		System.out.println("Enter a string (or \"quit\"): ");
+		String string = console.nextLine();
+		while(!string.equals("quit"))
+		{
+			System.out.println("Enter a size: ");
+			int size = console.nextInt();
+			if (size <= 0)
+			{
+				throw new IllegalArgumentException("Size must be at least 1!");
+			}
+			printBoxes(string, size);
+			
+			System.out.println();
+			System.out.println("Enter a string (or \"quit\"): ");
+			console.nextLine();
+			string = console.nextLine();
+		}
+	}
+
+	private static void printDashedLine(String string, int size)
+	{
+		System.out.print("-");
+		for(int i=0; i < string.length(); i++)
+		{
+			for(int c=0; c < size*2-1; c++)
+			{
+				System.out.print("-");
+			}
+		}
+		System.out.print("-");
+	}
+	
+	public static void printSpaceLine()
+	{
+		System.out.print("|");
+		for(int i=0; i < size*2-1; i++)
+		{
+			System.out.print(" ");
+		}
+	}
+	
+	public static void printLetterLine(String string, int size)
+	{
+		for(int i=0; i<string.length(); i++)
+		{
+			for(int c=0; c < size*2; c++)
+			{
+				while (c != size)
+				{
+					System.out.print(" ");
+				}
+				System.out.print(string.charAt(i));
+			}
+		}
+		System.out.print("|");
+	}
+	public static void printBoxes(String string, int size)
+	{
+		
+		//TOP OF THE BOXES
+		printDashedLine(string, size);
+		
+		for(int i=0; i<size-1; i++)
+		{
+			printSpaceLine();
+		}
+		
+		printLetterLine();
+
+		for(int i=0; i<size-1; i++)
+		{
+			printSpaceLine();
+		}
+		
+		//BOTTOM OF THE BOXES
+		System.out.println();
+		printDashedLine(string, size);
+	}
+
+}

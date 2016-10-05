@@ -1,0 +1,27 @@
+package src;
+import java.util.*;
+
+public class BoxedString2
+{
+
+	public static void main(String[] args)
+	{
+		Scanner console = new Scanner(System.in);
+		System.out.println("Enter a string (or \"quit\"): ");
+		String string = console.nextLine();
+		System.out.println("Enter a size: ");
+		int size = console.nextInt();
+		while(!string.equals("quit"))
+		{
+			int rows = getBoxDimensions(size);
+			printBoxes(string, rows, columns);
+		}
+	}
+
+	private static int getBoxDimensions(int size)
+	{
+		return size+1;
+	}
+	
+
+}

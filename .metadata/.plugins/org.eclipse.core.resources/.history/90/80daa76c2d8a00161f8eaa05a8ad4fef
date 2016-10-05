@@ -1,0 +1,25 @@
+package src;
+import java.util.*;
+public class EntryTask
+{
+
+	public static void main(String[] args)
+	{
+		Scanner i=new Scanner(System.in);
+
+		System.out.print("? ");
+
+		int n= (int)(Math.random()*(3+7));
+
+		n++ ;
+
+		int l =i.nextInt();
+
+		while(n != l){System.out.print("?? ");
+
+		l=i.nextInt(); }
+
+		System.out.println("!");
+	}
+
+}
