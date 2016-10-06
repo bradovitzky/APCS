@@ -40,7 +40,7 @@ public class FractionalCalculator
 			String answer = calculate(frac1, operator, frac2);
 			
 			System.out.println(answer);
-			System.out.print("Enter an expression (or \"quit\"): ");
+			System.out.println("Enter an expression (or \"quit\"): ");
 			input = console.nextLine();
 		}
 		System.out.println("Goodbye!");

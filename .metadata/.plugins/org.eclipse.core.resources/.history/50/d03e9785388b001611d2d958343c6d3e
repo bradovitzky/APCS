@@ -17,7 +17,7 @@ public class FractionalCalculator
 	{
 		Scanner console = new Scanner(System.in);
 		System.out.println("Welcome to the Fraction Calculator!");
-		System.out.print("Enter an expression (or \"quit\"): ");
+		System.out.println("Enter an expression (or \"quit\"): ");
 		String input = console.nextLine();
 		while(!input.equals("quit"))
 		{
@@ -33,14 +33,15 @@ public class FractionalCalculator
 			frac1 = convertToFraction(frac1);
 			frac2 = convertToFraction(frac2);
 
-			//System.out.println("Left operand: " + frac1);
-			//System.out.println("Operator: " + operator);
-			//System.out.println("Right operand: " + frac2);
+			System.out.println("Left operand: " + frac1);
+			System.out.println("Operator: " + operator);
+			System.out.println("Right operand: " + frac2);
 			
 			String answer = calculate(frac1, operator, frac2);
 			
 			System.out.println(answer);
-			System.out.print("Enter an expression (or \"quit\"): ");
+			System.out.println();
+			System.out.println("Enter an expression (or \"quit\"): ");
 			input = console.nextLine();
 		}
 		System.out.println("Goodbye!");
@@ -70,6 +71,7 @@ public class FractionalCalculator
 	{
 		int underscoreIndex = input.indexOf("_");
 		int slashIndex = input.indexOf("/");
+		System.out.println(Positivity(input));
 		String numerator;
 		if(underscoreIndex == -1)
 		{
@@ -104,7 +106,7 @@ public class FractionalCalculator
 	}
 	public static String convertToFraction(String input)
 	{
-		//int positivity = Positivity(input);
+		int positivity = Positivity(input);
 		int whole = getWhole(input);
 		if(input.indexOf("/") == -1)
 		{
@@ -115,11 +117,7 @@ public class FractionalCalculator
 			int numerator = getNumerator(input);
 			int denominator = getDenominator(input);
 			int ansNum;
-			if(numerator < 0 && whole == 0)
-			{
-				ansNum = (whole * denominator) + numerator;
-			}
-			else if(whole < 0)
+			if(numerator < 0 || whole < 0)
 			{
 				ansNum = (whole * denominator) - numerator;
 			}
@@ -127,6 +125,7 @@ public class FractionalCalculator
 			{
 				ansNum = (whole * denominator) + numerator;
 			}
+			
 			String answer = ansNum + "/" + denominator;
 			return answer;
 		}
