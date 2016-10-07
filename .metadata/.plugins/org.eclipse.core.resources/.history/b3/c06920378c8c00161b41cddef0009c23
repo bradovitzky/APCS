@@ -1,0 +1,9 @@
+package src;
+
+public class Quiz
+{
+	public static void main(String[] args)
+	{
+		double x = 2.5, y = 1.99;
+		  System.out.println((int)(x/y) + (int)(x*y));	}
+}

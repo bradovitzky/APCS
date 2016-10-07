@@ -1,0 +1,43 @@
+package src;
+import java.util.*;
+
+public class CurvingGrades
+{
+
+	public static void main(String[] args)
+	{
+		Scanner console = new Scanner(System.in);
+		System.out.print("How many grades will you enter? ");
+		int length = console.nextInt();
+		System.out.println();
+		int[] grades = new int[length];
+		for (int i = 0; i < length; i++)
+		{
+			System.out.print("Enter grade " + (i+1) + ": ");
+			grades[i] = console.nextInt();
+		}
+		curveGrades(grades);
+
+	}
+
+	private static void curveGrades(int[] grades)
+	{
+		int closestTo100;
+		int minDistance = 100;
+		for (int i = 0; i < grades.length; i++)
+		{
+			if (100-grades[i] < minDistance)
+			{
+				closestTo100 = grades[i];
+				minDistance = 100-grades[i];
+			}
+		}
+		for (int i = 0; i < grades.length; i++)
+		{
+			int[] curvedGrades = new int[grades.length];
+			curvedGrades[i] = grades[i] + minDistance;
+			System.out.println("Original: " + grades[i] + " With curve: " + curvedGrades[i]);
+		}
+	}
+
+}
