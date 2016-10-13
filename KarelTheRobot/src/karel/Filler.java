@@ -33,24 +33,28 @@ public class Filler extends Robot
 				putAndMove();
 				turnRight();
 			}
-			else
-			{
-				turnLeft();
-			}
 		}
 	}
-
-	public void jumpHurdle()
+	public void moveUpAndTurnAround()
 	{
-		findCorner();
-		putAndMove();
-		turnRight();
-		findCorner();
-		putAndMove();
-		turnRight();
-		findCorner();
+		if(facingEast())
+		{
+			turnLeft();
+			move();
+			turnLeft();
+		}
+		else
+		{
+			turnRight();
+			move();
+			turnRight();
+		}
 	}
-
+	public void turnAround()
+	{
+		turnLeft();
+		turnLeft();
+	}
 	public static void main(String[] args)
 	{
 		MakeHurdles temp = new MakeHurdles();
@@ -59,55 +63,86 @@ public class Filler extends Robot
 
 		Filler Frank = new Filler(1, 1, East, infinity);
 		World.setDelay(1);
-
-		// pre: Frank is doing street one, starting at the origin facing East
-		// post: Frank has finished the first row, and is sitting on top of the
-		// beeper on street 1
-		while (!Frank.nextToABeeper())
-		{
-			if (Frank.frontIsClear())
-			{
-				Frank.putAndMove();
-			}
-			Frank.jumpHurdle();
-		}
-		Frank.moveUpAndTurnAround();
-		while (!Frank.nextToABeeper())
-		{
-			Frank.putAndMove();
-		}
-		Frank.jumpBeeperHurdle();
-
-	}
-
-	private void jumpBeeperHurdle()
-	{
-		if (facingWest())
-		{
-			moveUpAndTurnAround();
-			putBeeper();
-		}
 		
+		while(!Frank.nextToABeeper())
+		{
+			Frank.findHurdleOrBeeper();
+			if(Frank.nextToABeeper())
+			{
+				Frank.fillEndSpace();
+				break;
+			}
+			Frank.putBeeper();
+			Frank.fillSpace();
+			Frank.topOffHurdle();
+			Frank.returnToFirstStreet();
+		}
 	}
-
-	private void moveUpAndTurnAround()
+	public void returnToFirstStreet()
 	{
-		if (facingEast())
+		while(frontIsClear())
 		{
-			turnLeft();
-			move();
-			turnLeft();
-			putBeeper();
-			move();
+			putAndMove();
 		}
-		else if (facingWest())
+		turnLeft();
+	}
+	public void topOffHurdle()
+	{
+		move();
+		turnRight();
+		findCorner();
+	}
+	//CHANGE THIS METHOD
+	public void findHurdleOrBeeper()
+	{
+		while(frontIsClear() && !nextToABeeper())
 		{
-			turnRight();
-			move();
-			turnRight();
-			putBeeper();
-			move();
+			putAndMove();
 		}
 	}
-
+	public void fillEndSpace()
+	{
+		int width = 0;
+		moveUpAndTurnAround();
+		while(frontIsClear())
+		{
+			move();
+			width++;
+		}
+		turnAround();
+		while(nextToABeeper())
+		{
+			move();
+			for(int i=0; i<=width; i++)
+			{
+				putAndMove();
+			}
+			putBeeper();
+			moveUpAndTurnAround();
+			for(int i=0; i<width; i++)
+			{
+				move();
+			}
+			moveUpAndTurnAround();
+		}
+	}
+	public void fillSpace()
+	{
+		while(!frontIsClear())
+		{
+			int width = 0;
+			moveUpAndTurnAround();
+			while(frontIsClear())
+			{
+				move();
+				width++;
+			}
+			turnAround();
+			for(int i=0; i<width; i++)
+			{
+				putAndMove();
+			}
+			putBeeper();
+		}
+	}
 }
