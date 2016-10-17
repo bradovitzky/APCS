@@ -21,11 +21,27 @@ public class FractionalCalculator
 		String input = console.nextLine();
 		while(!input.equals("quit"))
 		{
-			while (input.indexOf("+") == -1 && input.indexOf("-") == -1  && input.indexOf("*") == -1 && input.indexOf("/") == -1)
+			//THIS IS EXTRA CREDIT
+			if (input.equals("help"))
 			{
-				System.out.println("No operator detected, try again: ");
+				System.out.println();
+				System.out.println("This program is designed to take fractions or mixed numbers and perform operations to them.");
+				System.out.println("It takes mixed numbers in the form a_b/c, and fractions in the form a/b. Negatives are permitted.");
+				System.out.println("The only operators that this program accepts are: +, -, *, and /.");
+				System.out.println();
+				System.out.print("Enter your next operation: ");
 				input = console.nextLine();
 			}
+			
+			while (input.indexOf("+") == -1 && input.indexOf("-") == -1  && input.indexOf("*") == -1 && input.indexOf("/") == -1)
+			{
+				System.out.println("No operator detected. Type \"help\" for information.");
+				System.out.println("Try again: ");
+				input = console.nextLine();
+			}
+
+			//
+			
 			String frac1 = input.substring(0, input.indexOf(" "));
 			String operator = input.charAt(input.indexOf(" ") + 1) + "";
 			String frac2 = input.substring(input.indexOf(" ", input.indexOf(" ") + 1) + 1); //Finds second " " and starts frac2 after it
@@ -33,13 +49,12 @@ public class FractionalCalculator
 			frac1 = convertToFraction(frac1);
 			frac2 = convertToFraction(frac2);
 
-			//System.out.println("Left operand: " + frac1);
-			//System.out.println("Operator: " + operator);
-			//System.out.println("Right operand: " + frac2);
-			
 			String answer = calculate(frac1, operator, frac2);
+
+			String reducedAnswer = reduce(answer);
+			String finalAnswer = convertToMixed(reducedAnswer);
 			
-			System.out.println(answer);
+			System.out.println(finalAnswer);
 			System.out.print("Enter an expression (or \"quit\"): ");
 			input = console.nextLine();
 		}
@@ -185,65 +200,84 @@ public class FractionalCalculator
 			answer = "Incorrect operand!";
 		}
 		
-		String reducedAnswer = reduce(answer);
-		String finalAnswer = convertToMixed(reducedAnswer);
-		
-		return finalAnswer;
-	}
-	public static ArrayList<Integer> findPrimeFactors(int number)
-	{
-		ArrayList primeFactors = new ArrayList();
-		int counter = 0;
-		for(int i = number/2; i > 0; i--)
-		{
-			if (number%i == 0)
-			{
-				primeFactors.add(i);
-			}
-			counter++;
-		}
-		return primeFactors;
+		return answer;
 	}
 	
-	public static String reduce(String input)
+	public static int gcf(int smaller, int bigger)
 	{
-		int num = getNumerator(input);
-		int den = getDenominator(input);
-		ArrayList numFactors = findPrimeFactors(num);
-		ArrayList denFactors = findPrimeFactors(den);
-		for (int i = 0; i<numFactors.size(); i++)
+		int greatestSoFar = 1;
+
+		for (int i = 1; i <= smaller; i++)
 		{
-			for (int n = 0; n<denFactors.size();n++)
+			if (smaller % i == 0 && bigger % i == 0)
 			{
-				if (numFactors.get(i) == denFactors.get(i))
-				{
-					num /= (int) numFactors.get(i);
-					den /= (int) denFactors.get(i);
-				}
+			    greatestSoFar = i;
 			}
 		}
+		return greatestSoFar;
+	}
+	
+	public static String reduce(String fraction)
+	{
+		
+		int num = getNumerator(fraction);
+		int den = getDenominator(fraction);
+		int bigger;
+		int smaller;
+		if(num > den)
+		{
+			bigger = Math.abs(num);
+			smaller = Math.abs(den);
+		}
+		else
+		{
+			bigger = Math.abs(den);
+			smaller = Math.abs(num);
+		}
+		num /= gcf(smaller, bigger);
+		den /= gcf(smaller, bigger);
+		
 		return num + "/" + den;
 	}
 
-	public static String convertToMixed(String reducedFraction)
+	public static String convertToMixed(String fraction)
 	{
-		int num = getNumerator(reducedFraction);
-		int den = getDenominator(reducedFraction);
-		if (num < den)
+		int num = getNumerator(fraction);
+		int den = getDenominator(fraction);
+		if (num < den && !(num<=0))
 		{
-			return reducedFraction;
+			return fraction;
 		}
 		else
 		{
 			int whole;
 			int newNum = 0;
+			int positivity = Positivity(num+ "");
 			while (num%den != 0)
 			{
-				num--;
+				if (num<0)
+				{
+					num++;
+				}
+				else
+				{
+					num--;
+				}
 				newNum++;
 			}
 			whole = num/den;
-			return whole + "_" + newNum + "/" + den;
+			if (whole == 0 && newNum !=0)
+			{
+				return positivity*newNum + "/" + den;
+			}
+			else if (newNum == 0)
+			{
+				return whole + "";
+			}
+			else
+			{
+				return whole + "_" + newNum + "/" + den;
+			}
 		}
 	}
 }

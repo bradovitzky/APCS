@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="FractionalCalculatorTests" project="Fractional Calculator" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="fracCalc1.FractionalCalculatorTests" time="0.022">
+    <testcase name="FracCalcShouldPrintNegativesAndZeroes" classname="fracCalc1.FractionalCalculatorTests" time="0.017"/>
+    <testcase name="FracCalcShouldPrintLeftOperand" classname="fracCalc1.FractionalCalculatorTests" time="0.0"/>
+    <testcase name="FracCalcShouldPrintOperator" classname="fracCalc1.FractionalCalculatorTests" time="0.001"/>
+    <testcase name="FracCalcShouldPromptUser" classname="fracCalc1.FractionalCalculatorTests" time="0.001"/>
+    <testcase name="FracCalcShouldPrintGreetingFirst" classname="fracCalc1.FractionalCalculatorTests" time="0.001"/>
+    <testcase name="FracCalcShouldPrintRightOperand" classname="fracCalc1.FractionalCalculatorTests" time="0.0"/>
+    <testcase name="FracCalcShouldPrintGoodbyeLast" classname="fracCalc1.FractionalCalculatorTests" time="0.002"/>
+  </testsuite>
+</testrun>
