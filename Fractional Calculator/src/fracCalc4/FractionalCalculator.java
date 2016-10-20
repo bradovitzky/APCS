@@ -21,7 +21,11 @@ public class FractionalCalculator
 		String input = console.nextLine();
 		while(!input.equals("quit"))
 		{
-			//THIS IS EXTRA CREDIT
+			String frac1 = input.substring(0, input.indexOf(" "));
+			String operator = input.charAt(input.indexOf(" ") + 1) + "";
+			String frac2 = input.substring(input.indexOf(" ", input.indexOf(" ") + 1) + 1); //Finds second " " and starts frac2 after it
+			
+			// This is the beginning of Extra Credit
 			if (input.equals("help"))
 			{
 				System.out.println();
@@ -39,13 +43,20 @@ public class FractionalCalculator
 				System.out.println("Try again: ");
 				input = console.nextLine();
 			}
-
-			//
 			
-			String frac1 = input.substring(0, input.indexOf(" "));
-			String operator = input.charAt(input.indexOf(" ") + 1) + "";
-			String frac2 = input.substring(input.indexOf(" ", input.indexOf(" ") + 1) + 1); //Finds second " " and starts frac2 after it
+			if (getDenominator(frac1) == 0 || getDenominator(frac2) == 0)
+			{
+				System.out.println("You can't divide by 0!");
+				System.out.print("Try again: ");
+				input = console.nextLine();
+			}
 
+			// This is the end of Extra Credit
+			
+			frac1 = input.substring(0, input.indexOf(" "));
+			operator = input.charAt(input.indexOf(" ") + 1) + "";
+			frac2 = input.substring(input.indexOf(" ", input.indexOf(" ") + 1) + 1); //Finds second " " and starts frac2 after it
+			
 			frac1 = convertToFraction(frac1);
 			frac2 = convertToFraction(frac2);
 
@@ -101,7 +112,10 @@ public class FractionalCalculator
 	public static int getDenominator(String input)
 	{
 		int slashIndex = input.indexOf("/");
-		
+		if (slashIndex == -1)
+		{
+			return 1;
+		}
 		return Integer.parseInt(input.substring(slashIndex + 1));
 	}
 	
