@@ -1,0 +1,20 @@
+package src;
+
+public class Person
+{
+public String name(String nameInput)
+{
+	return null;
+}
+
+public int age(int ageInput)
+{
+	return 0;
+}
+
+public static void main(String[] args)
+{
+	
+}
+
+}

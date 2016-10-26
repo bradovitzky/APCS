@@ -1,0 +1,27 @@
+package src;
+
+import java.util.Scanner;
+
+public class PersonMainExtra
+{
+
+	public static void main(String[] args)
+	{
+		Scanner console = new Scanner(System.in);
+		Person[] People = new Person[5];
+		Person p1 = new Person();
+		Person p2 = new Person();
+		Person p3 = new Person();
+		Person p4 = new Person();
+		Person p5 = new Person();
+		
+		for(int i=0; i<5; i++)
+		{
+			System.out.println("Enter a person's name: ");
+			console.nextLine();
+			System.out.println("Enter a person's age: ");
+		}
+
+	}
+
+}

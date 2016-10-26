@@ -1,0 +1,16 @@
+
+public class october25
+{
+	public Point translate(Point p1)
+	{
+		Point p2 = new Point();
+		p2.y = p1.x;
+		p2.x = p1.y;
+		return p2;
+	}
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+
+	}
+}

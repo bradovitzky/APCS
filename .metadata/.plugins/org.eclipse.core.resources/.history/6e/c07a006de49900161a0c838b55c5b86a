@@ -1,0 +1,15 @@
+package src;
+
+public class Person
+{
+public String name(String input)
+{
+	return null;
+}
+
+public static void main(String[] args)
+{
+	
+}
+
+}

@@ -1,0 +1,12 @@
+
+public class october25
+{	
+	public static void main(String[] args)
+	{
+		Point point = new Point(3, 5);
+		//point.x = 3;
+		//point.y = 5;
+		point.translate(4, 1);
+		point.invert();
+	}
+}

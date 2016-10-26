@@ -1,0 +1,13 @@
+package src;
+
+public class PersonMainExtra
+{
+
+	public static void main(String[] args)
+	{
+		Person[] People = new Person[5];
+		
+
+	}
+
+}

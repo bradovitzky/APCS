@@ -1,0 +1,19 @@
+//October 25th
+
+public class Point
+{
+	int x;
+	int y;
+	
+	public void translate(int dx, int dy)
+	{
+		x += dx;
+		y += dy;
+	}
+	public void invert()
+	{
+		int value = x;
+		x = y;
+		y = value;
+	}
+}
