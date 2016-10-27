@@ -1,0 +1,12 @@
+package textExcel1;
+
+public class TextExcel
+{
+
+	public static void main(String[] args)
+	{
+		System.out.println("Welcome to TextExcel!");
+		System.out.println("Enter a command: ");
+	}
+
+}

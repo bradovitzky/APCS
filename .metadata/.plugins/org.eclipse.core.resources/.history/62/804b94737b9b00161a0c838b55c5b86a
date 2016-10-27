@@ -1,0 +1,19 @@
+package textExcel1;
+
+public class Cell
+{
+	String contents;
+	public Cell(String input)
+	{
+		contents = input;
+	}
+	public String getValue()
+	{
+		return contents;
+	}
+	
+	public static void main(String[] args) 
+    {
+		new Cell("*");
+    }
+}
