@@ -10,6 +10,8 @@ public class Spreadsheet
 
     // the 2D array of cells
     private Cell[][] data;
+    
+    int[][] mystructure = new int[2][5];
 
     // constructor
     public Spreadsheet()
@@ -100,17 +102,6 @@ public class Spreadsheet
     	
     private void printCell(int row, int col)
     {
-        // Here you would print the value stored in each cell at a given position
-        // in the sheet. You'd probably want to use the getValue method from the
-        // Cell class. But you need to be careful here. You can't just go through
-        // the whole sheet and print values for each cell. The problem is that many
-        // of the cells haven't been touched, which means they still have their initial
-        // values. These initial values are the special value called "null" which
-        // basically means, if you try to look up what's in it you'll get the dreaded
-        // nullPointerExceptionError. The way to deal with this is to first check if
-        // the cell is null. If it is null just print an empty cell. If its not null then
-        // go ahead and get its value and print it out. Below is the code for doing
-        // this check. 
         if (data[row][col] == null)
         {
            // this true branch is left for you to code
@@ -137,8 +128,27 @@ public class Spreadsheet
     
     // methods for formatting things are not shown 
 
-    // test code: if you run this class's main instead of your TextExcel, you should
+
+	// test code: if you run this class's main instead of your TextExcel, you should
     // see a grid printed that has 3 cells filled in.
+    public boolean isCellCommand(String input)
+    {
+    	String[] letters = {"A", "B", "C", "D", "E", "F", "G"};
+    	for(String letter : letters)
+    	{
+    		if(letter.equals(input.substring(0,1)))
+    		{
+    			for(int i = 0; i<ROWS; i++)
+    			{
+    				if(Integer.parseInt(input.substring(1)) == i)
+    				{
+    					return true;
+    				}
+    			}
+    		}
+    	}
+    	return false;
+    }
     public static void main(String[] args) 
     {
         // these lines should create a spreadsheet, add 3 cells to it,
@@ -147,6 +157,8 @@ public class Spreadsheet
         sheet.data[0][0] = new Cell("hi");
         sheet.data[3][6] = new Cell("text");
         sheet.data[7][4] = new Cell("excel");
+        sheet.data[5][1] = new Cell("potato");
+        
         sheet.print();
     }
 

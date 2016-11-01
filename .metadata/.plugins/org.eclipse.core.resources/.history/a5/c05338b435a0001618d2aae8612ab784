@@ -1,0 +1,16 @@
+package Pets;
+
+public class AngryDog extends Dog
+{
+
+	public String speak()
+	{
+		return "Grrrrr... " + super.speak();
+	}
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+}

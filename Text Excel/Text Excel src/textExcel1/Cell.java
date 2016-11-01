@@ -1,17 +1,29 @@
 package textExcel1;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class Cell
 {
-	String contents;
+	// instance variable
+	private String contents;
+	
+	// Constructors start
+	public Cell()
+	{
+		contents = "";
+	}
 	public Cell(String input)
+	{
+		contents = input;
+	}
+	// Constructors end
+	public void setValue(String input)
 	{
 		contents = input;
 	}
 	public String getValue()
 	{
-		return "value";
+		return contents;
 	}
 	public String toString()
 	{

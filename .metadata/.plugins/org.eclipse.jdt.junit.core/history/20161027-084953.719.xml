@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="TextExcelTests" project="Text Excel" tests="4" started="4" failures="0" errors="0" ignored="0">
-  <testsuite name="textExcel1.TextExcelTests" time="0.051">
-    <testcase name="TextExcelShouldPrintGoodbyeLast" classname="textExcel1.TextExcelTests" time="0.03"/>
-    <testcase name="TextExcelShouldPrintGrid" classname="textExcel1.TextExcelTests" time="0.019"/>
-    <testcase name="TextExcelShouldPromptForACommand" classname="textExcel1.TextExcelTests" time="0.001"/>
-    <testcase name="TextExcelShouldPromptGreetingFirst" classname="textExcel1.TextExcelTests" time="0.001"/>
-  </testsuite>
-</testrun>

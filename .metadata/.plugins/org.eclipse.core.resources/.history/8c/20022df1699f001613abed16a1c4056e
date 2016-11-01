@@ -1,0 +1,74 @@
+package Cards;
+
+public class Deck
+{
+	public static final int CARDS_IN_DECK = 52;
+	public static final int CARDS_IN_SUIT = 13;
+
+	// declare deck as a private field that is an array of Cards
+	// declare undealt as a private int field
+
+	public Deck()
+	{
+		String[] suits = { "Clubs", "Diamonds", "Hearts", "Spades" };
+		int c = 0;
+		for (String suit : suits)
+		{
+			for (int value = 1; value <= CARDS_IN_SUIT; value++)
+			{
+				// Uncomment the line below after you have declared deck
+				// deck[c] = new Card(value, suit);
+				c++;
+			}
+		}
+		// uncomment the line below after you have declared undealt;
+		// undealt = 0; // this will be the index of the next card to deal
+	}
+
+	public void print()
+	{
+		/*
+		 * Insert code to print the entire deck, each card on a separate line.
+		 */
+	}
+
+	public void shuffle()
+	{
+		/*
+		 * Insert code that rearranges the cards in the deck so they are in
+		 * random order.
+		 */
+	}
+
+	public Card topCard()
+	{
+		/*
+		 * Remove the incorrect line below and insert code to return the top
+		 * (undealt) card from the deck and update the undealt instance
+		 * variable.
+		 */
+		return null;
+	}
+
+	public void deal(int n)
+	{
+		/*
+		 * Insert code to print n cards from the deck by calling the topCard
+		 * method.
+		 */
+	}
+
+	// for testing purposes
+	public static void main(String[] args)
+	{
+		Deck myDeck = new Deck();
+		myDeck.print();
+		myDeck.shuffle();
+		System.out.println();
+		myDeck.print();
+		System.out.println();
+		myDeck.deal(5);
+		System.out.println();
+		myDeck.deal(5);
+	}
+}

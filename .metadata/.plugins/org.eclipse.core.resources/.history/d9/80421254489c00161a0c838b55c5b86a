@@ -1,0 +1,23 @@
+package src;
+
+import java.util.*;
+
+public class PersonMain
+{
+
+	public static void main(String[] args)
+	{
+		Scanner console = new Scanner(System.in);
+		System.out.print("Enter the person's name: ");
+		String name = console.nextLine();
+		System.out.print("Enter the person's age: ");
+		int age = console.nextInt();
+
+		Person p1 = new Person(name, age);
+		System.out.println(p1);
+		System.out.println("There are " + p1.getTimeLeft() + " until " + p1.getName() + " reaches retirement age.");
+		
+
+	}
+
+}

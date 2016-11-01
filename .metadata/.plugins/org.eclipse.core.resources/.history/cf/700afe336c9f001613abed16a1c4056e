@@ -1,0 +1,44 @@
+package DeckOfCards;
+
+public class Card
+{
+	int value;
+	String suit;
+
+	public Card(int v, String s)
+	{
+		value = v;
+		suit = s;
+	}
+
+	public String toString()
+	{
+		/*
+		 * Remove the incorrect line below and insert code here that will
+		 * convert a Card to a string.
+		 * Examples: "4 of Hearts", "King of Spades", "Ace of Diamonds"
+		 * Note: a King would have a value of 13, an Ace would have a value of 1
+		 */
+		String[] faceCards = {"Jack", "Queen", "King", "Ace"}
+		if(value <= 11 || value = 1)
+		{
+			
+		}
+		else
+		{
+			return value + "of " + suit;
+		}
+		return "";
+	}
+
+	// for testing purposes
+	public static void main(String[] args)
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			Card c = new Card((int) (Math.random() * 13 + 1), "Clubs");
+			System.out.println(c);
+		}
+	}
+
+}
