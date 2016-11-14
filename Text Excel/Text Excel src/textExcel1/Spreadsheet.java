@@ -1,3 +1,12 @@
+/**********************************************************
+ * Assignment: TextExcel
+ *
+ * Authors: Ben Radovitzky
+ *
+ * Academic Integrity: I pledge that this program represents my own work. I
+ * received help from no one in designing and debugging
+ * my program.
+ **********************************************************/
 package textExcel1;
 
 public class Spreadsheet
@@ -131,24 +140,6 @@ public class Spreadsheet
 
 	// test code: if you run this class's main instead of your TextExcel, you should
     // see a grid printed that has 3 cells filled in.
-    public boolean isCellCommand(String input)
-    {
-    	String[] letters = {"A", "B", "C", "D", "E", "F", "G"};
-    	for(String letter : letters)
-    	{
-    		if(letter.equals(input.substring(0,1)))
-    		{
-    			for(int i = 0; i<ROWS; i++)
-    			{
-    				if(Integer.parseInt(input.substring(1)) == i)
-    				{
-    					return true;
-    				}
-    			}
-    		}
-    	}
-    	return false;
-    }
     public static void main(String[] args) 
     {
         // these lines should create a spreadsheet, add 3 cells to it,

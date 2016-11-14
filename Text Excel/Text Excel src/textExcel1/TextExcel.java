@@ -1,3 +1,12 @@
+/**********************************************************
+ * Assignment: TextExcel
+ *
+ * Authors: Ben Radovitzky
+ *
+ * Academic Integrity: I pledge that this program represents my own work. I
+ * received help from no one in designing and debugging
+ * my program.
+ **********************************************************/
 package textExcel1;
 
 import java.util.*;
@@ -22,10 +31,6 @@ public class TextExcel
     		if(command.equals("print"))
     		{
     			printSheet(sheet);
-    		}
-    		else if(sheet.isCellCommand(command))
-    		{
-    			String contents = command.substring(command.indexOf('=') + 2);
     		}
     		else
     		{
