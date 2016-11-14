@@ -1,0 +1,23 @@
+package textExcel2;
+
+public class StringCell extends Cell
+{
+    String value;
+    
+    public StringCell (String userInput)
+    {
+        super(userInput);
+        value = userInput;
+    }
+    
+    public String getSheetValue()
+    {
+        return value;
+    }
+    
+    public static void main(String[] args)
+    {
+    	StringCell c1 = new StringCell("asdf");
+    	System.out.println(c1.getSheetValue());
+    }
+}

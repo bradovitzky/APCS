@@ -1,0 +1,23 @@
+package textExcel2;
+
+public class NumberCell extends Cell
+{
+    int value;
+    
+    public NumberCell(String userInput)
+    {
+        super(userInput);
+        value = Integer.parseInt(userInput);
+    }
+    
+    public String getSheetValue()
+    {
+        return value+"";
+    }
+    
+    public static void main(String[] args)
+    {
+    	NumberCell b1 = new NumberCell("1234");
+    	System.out.println(b1.getSheetValue());
+    }
+}

@@ -1,0 +1,39 @@
+package textExcel2;
+
+public class CellFactory
+{
+    /**
+     * Takes the userValue supplied and figures out what kind of Cell to make
+     * @param userValue - part of the command on the right side of the equal sign
+     * @return the appropriate type of Cell based on the userValue
+     */
+    public static Cell makeCell(String value)
+    {
+        //replace "true" with a test for quotes at the beginning and end
+        if (value.charAt(0) == '"' && value.charAt(value.length()-1) == '"')
+        {
+            return new StringCell(value);
+        }
+        
+        try // see if its a double
+        {
+            double test = Double.parseDouble(value);
+            return new NumberCell(value);
+        }
+        catch (Exception e)
+        {
+            // not a double
+        }
+        
+        try // see if its a date
+        {
+            // need to add code for parsing as a date here
+        }
+        catch (Exception e)
+        {
+            // not a date
+        }
+        
+        throw new IllegalArgumentException("Not valid for any Cell type: " + value);
+    }
+}
