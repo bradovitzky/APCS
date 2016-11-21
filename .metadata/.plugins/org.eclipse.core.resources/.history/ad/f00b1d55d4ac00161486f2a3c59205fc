@@ -1,0 +1,13 @@
+package textExcel3;
+
+public class FormulaCell extends Cell
+{
+
+	private Formula formula;
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+}
