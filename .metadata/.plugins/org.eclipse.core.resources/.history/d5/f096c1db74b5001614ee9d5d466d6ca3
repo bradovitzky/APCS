@@ -1,0 +1,22 @@
+/**********************************************************
+ * Assignment: Guess Your Number
+ *
+ * Author: Ben Radovitzky and Marcella Kamishlian
+ *
+ * Academic Integrity: We pledge that this program represents our own work. I
+ * received help from no one in designing and debugging
+ * my program.
+ **********************************************************/
+
+package src;
+
+public class BinarySearch
+{
+
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+}

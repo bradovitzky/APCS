@@ -1,0 +1,22 @@
+package textExcel3;
+
+public class FormulaCell extends Cell
+{
+	private String formula;
+
+	public FormulaCell(String input)
+	{
+		super(input);
+	}
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+	}
+	@Override
+	public String getDisplayValue()
+	{
+		// TODO Auto-generated method stub
+		return "" + formula;
+	}
+
+}

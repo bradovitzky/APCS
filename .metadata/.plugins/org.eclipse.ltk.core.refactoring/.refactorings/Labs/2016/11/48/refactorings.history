@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;ExpressionSimplifier.java&apos; to &apos;Text Excel/Text Excel src/textExcel3&apos;&#x0A;- Original project: &apos;Labs&apos;&#x0A;- Destination element: &apos;Text Excel/Text Excel src/textExcel3&apos;&#x0A;- Original element: &apos;src.ExpressionSimplifier.java&apos;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="=Text Excel/Text Excel src&lt;textExcel3" element1="/&lt;src{ExpressionSimplifier.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1479824328092" units="1" version="1.0"/>
+</session>

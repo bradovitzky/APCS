@@ -182,7 +182,7 @@ public class Spreadsheet
 		}
 		return false;
 	}
-	// gets the value of whatever cell you want it to
+	// gets the value of whatever cell you want it to	
 	public void getValue(String position)
 	{
 		int row;

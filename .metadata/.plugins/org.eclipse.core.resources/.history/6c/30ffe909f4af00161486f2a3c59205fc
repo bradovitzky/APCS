@@ -1,0 +1,24 @@
+package src;
+public class ReverseString
+{
+    public static void main(String[] args)
+    {
+        String s = "Opportunity Diversity Respect";
+
+        System.out.println(s);
+
+        s = reverse(s);
+        
+        System.out.println(s);
+    }
+    public static String reverse(String s)
+    {
+    	if(s.length() == 1)
+    	{
+    		return s;
+    	}
+    	firstLetter = s.substring(0, 1);
+    	s = s.substring();
+    	return reverse(s);
+    }
+}

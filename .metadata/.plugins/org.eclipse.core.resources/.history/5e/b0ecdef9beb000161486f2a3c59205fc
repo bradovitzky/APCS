@@ -1,0 +1,19 @@
+package textExcel3;
+
+public class FormulaCell extends Cell
+{
+	private String formula;
+	private ExpressionSimplifier mathGod;
+	public FormulaCell(String input)
+	{
+		super(input);
+		
+		formula = mathGod.simplify(input);
+	}
+	@Override
+	public String getDisplayValue()
+	{
+		return "" + formula;
+	}
+
+}

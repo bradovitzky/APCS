@@ -37,6 +37,7 @@ public class CellFactory
             double test = Double.parseDouble(value);
             return new NumberCell(value);
         }
+        
         catch (Exception e)
         {
             // not a double

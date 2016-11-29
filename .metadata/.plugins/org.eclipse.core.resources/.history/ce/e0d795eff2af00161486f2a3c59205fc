@@ -1,0 +1,20 @@
+package src;
+public class ReverseString
+{
+    public static void main(String[] args)
+    {
+        String s = "Opportunity Diversity Respect";
+
+        System.out.println(s);
+
+        s = reverse(s);
+        
+        System.out.println(s);
+    }
+    public static String reverse(String s)
+    {
+    	String lastLetter = s.substring(s.length()-1);
+    	s = s.substring(0, s.length()-1);
+    	return reverse(s);
+    }
+}

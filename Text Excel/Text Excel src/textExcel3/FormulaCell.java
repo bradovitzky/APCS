@@ -2,21 +2,16 @@ package textExcel3;
 
 public class FormulaCell extends Cell
 {
-	private String formula;
-
+	private double formula;
+	private ExpressionSimplifier mathGod = new ExpressionSimplifier();
 	public FormulaCell(String input)
 	{
 		super(input);
-	}
-	public static void main(String[] args)
-	{
-		// TODO Auto-generated method stub
-
+		formula = mathGod.simplify(input);
 	}
 	@Override
 	public String getDisplayValue()
 	{
-		// TODO Auto-generated method stub
 		return "" + formula;
 	}
 
