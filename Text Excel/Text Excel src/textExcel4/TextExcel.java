@@ -75,7 +75,7 @@ public class TextExcel
 			// the whole command is just a cell reference, so display it.
 			if (firstPart.equals(command))
 			{
-				sheet.displayCell(command);
+				sheet.getDisplayValue(command);
 				return;
 			}
 
@@ -85,7 +85,7 @@ public class TextExcel
 			// location in firstPart.
 			if (command.substring(space).startsWith(" = "))
 			{
-				sheet.setCell(firstPart, CellFactory.create(command.substring(space + 3)));
+				sheet.setCell(firstPart, CellFactory.create(command.substring(space + 3), sheet));
 				return;
 			}
 		}

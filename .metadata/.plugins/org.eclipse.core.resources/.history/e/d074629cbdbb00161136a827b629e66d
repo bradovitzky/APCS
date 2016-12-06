@@ -1,0 +1,20 @@
+package textExcel4;
+
+public class FormulaCell extends Cell
+{
+	private double formula;
+	private Spreadsheet sheet
+	private ExpressionSimplifier mathGod = new ExpressionSimplifier();
+	public FormulaCell(String input, Spreadsheet sheet)
+	{
+		super(input);
+		
+	}
+	@Override
+	public String getDisplayValue()
+	{
+		formula = mathGod.simplify(input.substring(1, input.length()-1), sheet);
+		return "" + formula;
+	}
+
+}

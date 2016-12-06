@@ -19,13 +19,26 @@ public class ExpressionSimplifier
 	 * @return - a double representing the result of evaluating the
 	 * expression
 	 */
-	public double simplify(String expression)
+	public double simplify(String expression, Spreadsheet sheet)
 	{
 		// first, break the expression up so that each 'token' (each number
 		// or operator with spaces around it) becomes one element in an 
 		// ArrayList
 		ArrayList<String> tokens = convertToList(expression);
+		ExpressionSimplifier mathGod1 = new ExpressionSimplifier();
 		
+		for(int i=0; i<tokens.size(); i++)
+		{
+			if(sheet.isCellReference(tokens.get(i)))
+			{
+				String value = sheet.numValFromRef(tokens.get(i));
+				replaceInList(tokens, i, 1, value);
+			}
+			else if(tokens.get(i).equals("sum"))
+			{
+				String value = 
+			}
+		}
 		// Repeatedly find the next operand-operator-operand trio of tokens,
 		// evaluate it, and replace it with the result, until we're down to
 		// a single token
@@ -159,7 +172,6 @@ public class ExpressionSimplifier
 		{
 			throw new InvalidParameterException("'" + op + "' is not a valid operator");
 		}
-		System.out.println(answer);
 		return Double.toString(answer);
 	}
 	
