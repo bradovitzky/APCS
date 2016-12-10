@@ -1,0 +1,69 @@
+package activity1;
+
+import org.junit.Test;
+import testHelp.verify;
+
+public class CardTests
+{
+
+    @Test
+    public void CardConstructorShouldNotCrash()
+    {
+        Card test = new Card("Two", "Hearts", 2);
+        verify.that(test).isOfType(Card.class);
+    }
+    
+    @Test
+    public void CardShouldReturnRank()
+    {
+        Card test = new Card("Two", "Hearts", 2);
+        verify.that(test.getRank()).isEqualTo("Two");
+    }
+    
+    @Test
+    public void differentValueReturnsFalseForEquals()
+    {
+        Card a = new Card("Ace", "Spades", 1);
+        Card b = new Card("Ace", "Spades", 2);
+        verify.that(a.equals(b)).isFalse("because value is different");
+    }
+    
+    @Test
+    public void toStringReturnsPropervalue() // needs fixing
+    {
+        Card a = new Card("Ace", "Spades", 1);
+        verify.that(a.toString()).isEqualTo(a.getRank() + " of " + a.getSuit() + " (point value = " + a.getValue() + ")");
+    }
+
+    // other unit tests would go here
+    
+    @Test
+    public void cardShoudlReturnSuit()
+    {
+    	Card test = new Card("Two", "Hearts", 2);
+    	verify.that(test.getSuit()).isEqualTo("Hearts");
+    }
+    
+    @Test
+    public void cardShouldReturnValue()
+    {
+        Card test = new Card("Two", "Hearts", 2);
+        verify.that(test.getValue()).isEqualTo(2);
+    }
+    
+    @Test
+    public void equalsShouldReturnFalse1()
+    {
+    	Card a = new Card("Five", "Clubs", 5);
+    	Card b = new Card("Six", "Clubs", 5);
+    	verify.that(a.equals(b)).isFalse("because rank is different");
+    }
+    
+    @Test
+    public void equalsShouldReturnFalse2()
+    {
+    	Card a = new Card("Five", "Clubs", 5);
+    	Card b = new Card("Five", "Hearts", 5);
+    	verify.that(a.equals(b)).isFalse("because suit is different");
+    }
+}

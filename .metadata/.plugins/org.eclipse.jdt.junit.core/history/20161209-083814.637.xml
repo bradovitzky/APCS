@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CardTests" project="Elevens" tests="10" started="10" failures="0" errors="0" ignored="0">
+  <testsuite name="activity1.CardTests" time="0.0">
+    <testcase name="equalsShouldReturnFalse1" classname="activity1.CardTests" time="0.0"/>
+    <testcase name="equalsShouldReturnFalse2" classname="activity1.CardTests" time="0.0"/>
+    <testcase name="equalsShouldReturnFalse3" classname="activity1.CardTests" time="0.0"/>
+    <testcase name="equalsShouldReturnFalse4" classname="activity1.CardTests" time="0.0"/>
+    <testcase name="CardConstructorShouldNotCrash" classname="activity1.CardTests" time="0.0"/>
+    <testcase name="cardShouldReturnValue" classname="activity1.CardTests" time="0.0"/>
+    <testcase name="cardShoudlReturnSuit" classname="activity1.CardTests" time="0.0"/>
+    <testcase name="differentValueReturnsFalseForEquals" classname="activity1.CardTests" time="0.0"/>
+    <testcase name="toStringReturnsPropervalue" classname="activity1.CardTests" time="0.0"/>
+    <testcase name="CardShouldReturnRank" classname="activity1.CardTests" time="0.0"/>
+  </testsuite>
+</testrun>

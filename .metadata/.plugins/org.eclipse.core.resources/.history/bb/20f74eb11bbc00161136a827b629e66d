@@ -1,0 +1,122 @@
+/* TODO: include a comment here with the driver/navigator names and 
+ * what 3 problems you found and fixed.
+ * Ben Radovitzky (I did it alone)
+ * STEPS IN SOLVING THE PROBLEM
+ * 1. I started out by changing the list that was given to me into a list that looks like this {1, 1, 1, 1, 1}
+ * I noticed that the output was the following: {1, 1, 1, 3, 1}. So I could already tell that somewhere, one of
+ * the elements was being changed instead of simply being moved.
+ * 2. After I solved this, which I found on line 47 because of the confusing name of the index, I ran it again
+ * and it passed just fine. Time to change my list again. I tried putting in a 0 in the first spot, like this:
+ * {0, 1, 1, 1, 1}. This worked however, so I had to switch it up. How about at the end? Ok, this didn't work.
+ * It left it the way it had started. So, for some reason, it wasn't being affected. While doing step 1, I
+ * noticed something. On line 32, there seems to be a really weird issue, where the loop is skipping over by 
+ * 2s instead of iterating through each one. Let's try and fix that, it might solve our problem.
+ */
+
+package src;
+
+import java.util.Arrays;
+
+// contains a buggy implementation of insertion sort for you to fix.
+public class InsertionSortWithBugs 
+{
+	// keeps track of the approximate number of operations it takes to
+	// do a insertion sort
+	private static int operations = 0;
+	
+	// sorts numbers using the insertion sort algorithm
+	private static void insertionSort(int[] numbers)
+	{
+		// we always assume the left half of the array is already sorted and the
+		// right half needs to be sorted, so we can initially start at element 1
+		// instead of element 0 (since the 1-element array at the left is 'sorted')
+		for (int i = 1; i < numbers.length; i++) // NOTE TO SELF: This doesn't seem right... why +=2? It should traverse each one, not skip
+		{
+			// we store the value we're currently looking at, since we'll probably
+			// shift some sorted values on top of it
+			int value = i; // NOTE TO SELF: The i here is the index, not the actual value.
+			
+			// starting at the end of the sorted part of the array (so, to the left
+			// of the value we're looking at) and going down to zero, try to find
+			// the right spot for the element
+			for (int k = i - 1; k >= 0; k--)
+			{
+				operations++; // for the comparison
+				
+				// if the value is bigger than the number we're looking at, we found
+				// the right spot. The value will be inserted to the right of element k.
+				// We can break here; no need to iterate further.
+				if (value > numbers[k])
+				{
+					operations++; // for the assignment
+					numbers[k + 1] = numbers[value]; // This is wrong. We don't want to set it equal to the index, we want it to be the value.
+					break;
+				}
+				// otherwise, we can move element k's value into the k+1 slot and
+				// tentatively store our value in element k. As we continue,
+				// we may shift it further to the left but this is ok for this iteration.
+				else
+				{
+					operations += 2; // for the assignments
+					numbers[k + 1] = numbers[k];
+					numbers[k] = numbers[k + 1]; //NOTE TO SELF: This part is weird and doesn't make sense. What is it trying to do?
+				}
+			}
+		}
+	}
+	
+	// creates an unsorted array and sorts it using your insertion sort method
+	// and the Arrays.sort method, then compares the result to see if you got
+	// your insertion sort correct. You don't need to modify anything from
+	// here down, though you can feel free to look at it.
+	public static void main(String[] args) 
+	{
+		// if you want a bigger or smaller array for testing, you can change the parameters
+		// to createRandomNumberArray. The first parameter is how many elements go into
+		// the array.
+		int[] yourNumbers = {1, 1, 1, 1, 0}; // createRandomNumberArray(10, 0, 100)
+		int[] myNumbers = Arrays.copyOf(yourNumbers, yourNumbers.length);
+		
+		System.out.println("Array to be sorted: " + Arrays.toString(yourNumbers));
+		System.out.println();
+
+		insertionSort(yourNumbers);
+		Arrays.sort(myNumbers);
+		
+		System.out.println("Your sorted array:  " + Arrays.toString(yourNumbers));
+		System.out.println("My sorted array:    " + Arrays.toString(myNumbers));
+		System.out.println();
+		System.out.println("Your sort took about " + operations + " operations.");
+		System.out.println();
+
+		verifySorting(yourNumbers, myNumbers);
+	}
+
+	// creates an array with random numbers in it
+	private static int[] createRandomNumberArray(int size, int minValue, int maxValue)
+	{
+		int[] result = new int[size];
+		for (int i = 0; i < size; i++)
+			result[i] = (int)(Math.random() * (maxValue - minValue)) + minValue;
+		
+		return result;
+	}
+	
+	// checks to see that two arrays line up and prints the result
+	private static void verifySorting(int[] yours, int[] mine)
+	{
+		boolean foundError = false;
+		for (int i = 0; i < yours.length; i++)
+		{
+			if (yours[i] != mine[i])
+			{
+				System.out.println("Your array is not sorted correctly. The element at index " + i + " is wrong.");
+				foundError = true;
+				break;
+			}
+		}
+		
+		if (!foundError)
+			System.out.println("Good job! The sorted arrays match.");
+	}
+}

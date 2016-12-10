@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;textExcel4&apos; to &apos;Text Excel/Text Excel src/textExcel4&apos;&#x0A;- Original project: &apos;Text Excel&apos;&#x0A;- Destination element: &apos;Text Excel/Text Excel src/textExcel4&apos;&#x0A;- Original element: &apos;Text Excel/Text Excel src/textExcel4&apos;" description="Copy package" destination="/Text Excel src&lt;textExcel4" element1="/Text Excel src&lt;textExcel4" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1481116164829" version="1.0"/>
+</session>
