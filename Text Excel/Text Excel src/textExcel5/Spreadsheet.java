@@ -1,5 +1,7 @@
 package textExcel5;
 
+import java.util.Arrays;
+
 /* Spreadsheet stores a 2d array of Cell objects and is able to 
  * modify the array and display it by printing to System.out.
  */
@@ -170,8 +172,6 @@ public class Spreadsheet
 	
 	public String calcSum(String range)
 	{
-		// TODO Auto-generated method stub
-		String[] letters = {"A", "B", "C", "D", "E", "F", "G"};
 		String rangeStart = range.substring(0, range.indexOf(':'));
 		int startCol = getCol(rangeStart);
 		int startRow = getRow(rangeStart);
@@ -191,7 +191,6 @@ public class Spreadsheet
 	}
 	public String calcAvg(String range)
 	{
-		String[] letters = {"A", "B", "C", "D", "E", "F", "G"};
 		String rangeStart = range.substring(0, range.indexOf(':'));
 		int startCol = getCol(rangeStart);
 		int startRow = getRow(rangeStart);
@@ -210,5 +209,109 @@ public class Spreadsheet
 			}
 		}
 		return avg/numberOfBoxes + "";
+	}
+
+	public boolean isSortCommand(String cmd)
+	{
+		if(cmd.equals("sorta") || cmd.equals("sortd"))
+		{
+			return true;
+		}
+		return false;
+	}
+
+	public void sort(Spreadsheet sheet, String type, String range)
+	{
+		String rangeStart = range.substring(0, range.indexOf(':'));
+		int startCol = getCol(rangeStart);
+		int startRow = getRow(rangeStart);
+		String rangeEnd = range.substring(range.indexOf(':')+1);
+		int endCol = getCol(rangeEnd);
+		int endRow = getRow(rangeEnd);
+		Cell[] array = new Cell[(endRow-startRow+1)*(endCol-startCol+1)];
+		int c = 0;
+		
+		//this bit right here is just imitating what we did above in order to get the cells' contents into a list of Cells
+		for(int i=startRow; i<=endRow; i++)
+		{
+			for(int j=startCol; j<=endCol; j++)
+			{
+				array[c] = data[i][j];
+				c++;
+			}
+		}
+		
+		//down here, we're going to order that list
+		mergeSort(array);
+		
+		//and finally, we're going to put it back into the spreadsheet
+		//note: here is also where we check if the command was a "sorta" or "sortd"
+		//note2: we're going to use the same counter c, in order to remove a little clutter.
+		c = 0;
+		if(type.equals("sorta"))
+		{
+			//this is the ascending sort, so just do in standard order
+			for(int i=startRow; i<=endRow; i++)
+			{
+				for(int j=startCol; j<=endCol; j++)
+				{
+					data[i][j] = array[c];
+					c++;
+				}
+			}
+		}
+		else
+		{
+			//this is the descending sort, so start and end and go backwards
+			c = array.length;
+			for(int i=startRow; i<=endRow; i++)
+			{
+				for(int j=startCol; j<=endCol; j++)
+				{
+					data[i][j] = array[c-1];
+					c--;
+				}
+			}
+		}
+	}
+	
+	// From here down are the methods used for sorting.
+	// Note: I used mergeSort because I like that it works faster
+	public static void mergeSort(Cell[] array)
+	{
+		// TODO: write your code to sort numbers here. Be sure to increment
+		// operations every time you access an element of numbers (e.g.
+		// for a comparison or to copy it)
+		
+		if(array.length>1)
+		{
+			Cell[] left = Arrays.copyOfRange(array, 0, array.length/2);
+			Cell[] right = Arrays.copyOfRange(array, array.length/2, array.length);
+			
+			mergeSort(left);
+			mergeSort(right);
+			
+			merge(array, left, right);
+		}
+	}
+	
+	public static void merge(Cell[] result, Cell[] left, Cell[] right)
+	{
+		int i1 = 0;
+		int i2 = 0;
+		
+		for(int i = 0; i < result.length; i++)
+		{
+			if(i2>=right.length || i1<left.length && Double.parseDouble(left[i1].getDisplayValue()) <= Double.parseDouble(right[i2].getDisplayValue()))
+			{
+				result[i] = left[i1];
+				i1++;
+			}
+			else
+			{
+				result[i] = right[i2];
+				i2++;
+			}
+		}
 	}
 }

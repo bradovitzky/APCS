@@ -89,6 +89,12 @@ public class TextExcel
 				return;
 			}
 		}
+		else if (sheet.isSortCommand(firstPart))
+		{
+			String type = command.substring(0, space);
+			sheet.sort(sheet, type, command.substring(space+1));
+			return;
+		}
 
 		throw new IllegalArgumentException(command + " is not recognized as a valid command.");
 	}

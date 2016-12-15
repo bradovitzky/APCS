@@ -1,0 +1,110 @@
+/**********************************************************
+ * Assignment: Elevens
+ *
+ * Authors: Ben Radovitzky
+ *
+ * Academic Integrity: I pledge that this program represents my own work. I
+ * received help from no one in designing and debugging
+ * my program.
+ **********************************************************/
+package activity2;
+
+import org.junit.Test;
+import testHelp.verify;
+import java.util.*;
+
+
+public class DeckUnitTests
+{
+	private ArrayList<String> suits = new ArrayList(Arrays.asList("Clubs", "Hearts", "Spades", "Diamonds"));
+	private ArrayList<String> ranks = new ArrayList(Arrays.asList("Jack", "Queen", "King", "Ace"));
+	private ArrayList<Integer> values = new ArrayList(Arrays.asList(11, 12, 13, 1));
+
+	private ArrayList<String> suits1 = new ArrayList(Arrays.asList("Hearts"));
+	private ArrayList<String> ranks1 = new ArrayList(Arrays.asList("Seven"));
+	private ArrayList<Integer> values1 = new ArrayList(Arrays.asList(7));
+	
+
+	private ArrayList<String> suits2 = new ArrayList();
+	private ArrayList<String> ranks2 = new ArrayList();
+	private ArrayList<Integer> values2 = new ArrayList();
+	
+	@Test
+	public void DeckConstructorShouldNotCrash()
+	{
+		Deck test = new Deck(ranks, suits, values);
+        verify.that(test).isOfType(Deck.class);
+	}
+
+	@Test
+	public void DeckConstructorShouldHandleSingleCard()
+	{
+		Deck test = new Deck(ranks1, suits1, values1);
+		verify.that(test.getCardsLeft()).equals(1);
+	}
+	
+	@Test
+	public void DealReturnsCorrectCard()
+	{
+		Card expected = new Card("Seven", "Hearts", 7);
+		Deck d = new Deck(ranks1, suits1, values1);
+		Card dealt = d.deal();
+		verify.that(dealt.equals(expected)).isTrue();
+	}
+ 	
+	@Test
+	public void SizeIsZeroAfterDealingAllCards()
+	{
+		Deck d = new Deck(ranks, suits, values);
+		while(d.getCardsLeft()>0)
+		{
+			d.deal();
+		}
+		verify.that(d.getCardsLeft() == 0).isTrue();
+	}
+	
+ 	@Test
+	public void CorrectSizeAfterDealingOneCard()
+	{
+ 		Deck original = new Deck(ranks, suits, values);
+		Deck d = new Deck(ranks, suits, values);
+		Card c = d.deal();
+		verify.that(d.getCardsLeft()).isEqualTo(original.getCardsLeft()-1);
+	} 	
+	
+	@Test
+	public void DealReturnsNullForEmptyDeck()
+	{
+		Deck test = new Deck(ranks2, suits2, values2);
+		Card nope = test.deal();
+		verify.that(nope).isEqualTo(null);
+	}
+	
+	@Test
+	public void DeckShouldBeEmptyAfterDealing()
+	{
+		Deck test = new Deck(ranks1, suits1, values1);
+		test.deal();
+		verify.that(test.isEmpty()).isTrue();
+	}
+	
+	@Test
+	public void ShuffleShouldRearrangeCards()
+	{
+		Deck original = new Deck(ranks, suits, values);
+		ArrayList<Card> shuffledCards = new ArrayList<Card>();
+		// some code omitted
+
+		ArrayList<Card> unshuffledCards = new ArrayList<Card>();
+		// some code omitted
+
+		verify.that(shuffledCards).isEquivalentTo(unshuffledCards);
+	}
+	/*
+	@Test
+	public void ShuffleShouldResetDeckSize()
+	{
+		
+	}
+	*/
+}
